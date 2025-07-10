@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting to App...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    // Parse query parameters
+    function getQueryParam(name) {
+      const url = new URL(window.location.href);
+      return url.searchParams.get(name);
+    }
+    window.onload = function() {
+      var token = getQueryParam('token');
+      var email = getQueryParam('email');
+      if (token && email) {
+        // Redirect to the custom scheme
+        window.location.href = `lendly://reset-password?token=${encodeURIComponent(token)}&email=${encodeURIComponent(email)}`;
+        // Show a message in case the redirect fails
+        setTimeout(function() {
+          document.getElementById('fallback').style.display = 'block';
+        }, 2000);
+      } else {
+        document.getElementById('error').style.display = 'block';
+      }
+    }
+  </script>
+  <style>
+    body { font-family: sans-serif; text-align: center; margin-top: 60px; }
+    #fallback, #error { display: none; margin-top: 30px; }
+  </style>
+</head>
+<body>
+  <h2>Redirecting to Community Sharing app...</h2>
+  <div id="fallback">
+    <p>If nothing happens, please make sure the app is installed and try again.</p>
+    <p>You can also copy and paste this link into your browser:</p>
+    <code id="deeplink"></code>
+  </div>
+  <div id="error">
+    <p>Invalid link. Please check your email for the correct reset link.</p>
+  </div>
+  <script>
+    // Show the deep link in the fallback message
+    var token = getQueryParam('token');
+    var email = getQueryParam('email');
+    if (token && email) {
+      document.getElementById('deeplink').textContent = `lendly://reset-password?token=${token}&email=${email}`;
+    }
+  </script>
+</body>
+</html>
