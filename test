@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Deep Link Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        .button { background: #16a34a; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Deep Link Test</h1>
+    
+    <div class="test">
+        <h3>Test 1: Direct Link</h3>
+        <a href="lendly://reset-password?token=test123&email=test@example.com" class="button">
+            Click to test direct link
+        </a>
+    </div>
+    
+    <div class="test">
+        <h3>Test 2: Manual URL</h3>
+        <p>Copy and paste this into your browser address bar:</p>
+        <code>lendly://reset-password?token=test123&email=test@example.com</code>
+    </div>
+    
+    <div class="test">
+        <h3>Debug Info</h3>
+        <p><strong>To test this:</strong></p>
+        <ol>
+            <li>Make sure your Community Sharing app is installed</li>
+            <li>Open this page on your Android device</li>
+            <li>Click the button above</li>
+            <li>You should see "Open Community Sharing?" prompt</li>
+        </ol>
+        
+        <p><strong>If nothing happens:</strong></p>
+        <ul>
+            <li>App is not installed</li>
+            <li>Testing on desktop (try mobile)</li>
+            <li>Browser is blocking the link</li>
+        </ul>
+    </div>
+</body>
+</html> 
